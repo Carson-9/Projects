@@ -5,7 +5,7 @@ What's already in:
   - Conversion of a set of 3d vertices to displayed shapes
   - Support for custom OBJ files
   - Light sources (Static or dynamic vertices)
-  - FPS Camera with movement via keyboard inputs (ZQSD SPACE-SHIFT)
+  - FPS Camera with movement via keyboard and mouse inputs (ZQSD SPACE-SHIFT)
   - Crude and basic optimisations (Not rendering triangles that are unable to be seen)
 
 How to use:
