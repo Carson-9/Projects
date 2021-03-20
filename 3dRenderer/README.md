@@ -1,4 +1,5 @@
-This is a 3d Rendering engine made in Java
+This is a 3d Rendering engine made in Java.
+Currently working on it.
 
 Still a Work In Progress:
 What's already in:
