@@ -70,17 +70,22 @@ public class Cam extends Object {
                 Structures.Vertex triNormal = tri.Normal;
                 Structures.Vertex camToTri = Structures.Vector_Normalize(Structures.Vector_Sub(tri.a,this.pos));
 
-                tri = new Structures.tri(transformInverse.MatrixMultiply(tri.a),transformInverse.MatrixMultiply(tri.b),transformInverse.MatrixMultiply(tri.c));
+		if (Structures.Vector_Dot(camToTri,triNormal) < 0f) {    
+		    
+                    tri = new Structures.tri(transformInverse.MatrixMultiply(tri.a),transformInverse.MatrixMultiply(tri.b),transformInverse.MatrixMultiply(tri.c));
 
-                if (Structures.Vector_Dot(camToTri,triNormal) < 0f & (tri.a.z >0 & tri.b.z >0 & tri.c.z >0)){
+                    if (tri.a.z >0 & tri.b.z >0 & tri.c.z >0){
                     tri.Normal = triNormal;
                     tri.WorldPos = triWorldPos;
                     WorldMesh.add(tri);
+                    }
                 }
             }
-        }
+	}
         return WorldMesh;
     }
+	
+	
     public void render(){
 
         this.lookDir = new Structures.Vertex((float)Math.sin(this.rotation[1]),(float)Math.sin(this.rotation[0]),(float)Math.cos(this.rotation[1]));
