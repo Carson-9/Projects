@@ -7,7 +7,7 @@ What's already in:
   - Support for custom OBJ files
   - Light sources (Static or dynamic vertices)
   - FPS Camera with movement via keyboard and mouse inputs (ZQSD SPACE-SHIFT)
-  - Crude and basic optimisations (Not rendering triangles that are unable to be seen)
+  - Crude and basic optimisations (Not rendering triangles that are unable to be seen & clipping)
 
 How to use:
 Renderer.java is the main loop, you can change .obj/.txt file location and you can also add multiple objects (watch out for performances issues)
