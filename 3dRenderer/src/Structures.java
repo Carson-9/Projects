@@ -79,15 +79,15 @@ public class Structures {
 	}
 
 	
-	public static class tri{
+	public static class Tri{
 		Vertex a = new Vertex(0,0,0); Vertex b = new Vertex(0,0,0); Vertex c = new Vertex(0,0,0);
 		Vertex WorldPos = new Vertex(0,0,0);
 		Vertex Normal;
 		Color color = new Color(255,255,255);
-		public tri(Vertex a, Vertex b, Vertex c) {
+		public Tri(Vertex a, Vertex b, Vertex c) {
 			this.a = a; this.b = b; this.c = c;
 			Normal = Vector_Cross(Vector_Sub(b,a),Vector_Sub(c,a));
-			this.WorldPos = new Vertex(this.a.x,this.a.y,this.a.z);
+			this.WorldPos = new Vertex((this.a.x + this.b.x + this.c.x) / 3, (this.a.y + this.b.y + this.c.y) / 3, (this.a.z + this.b.z + this.c.z) / 3);
 		}
 		public void setColor(Color color) {
 			this.color = color;

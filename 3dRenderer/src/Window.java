@@ -23,7 +23,7 @@ public class Window{
 	public static class Drawer extends JPanel{
 		public ArrayList<Integer> Controls;
 		private static final long serialVersionUID = -5930096611050347846L;
-		private ArrayList<Structures.tri> World;
+		private ArrayList<Structures.Tri> World;
 		Dimension screen;
 		JFrame win;
 		boolean fill;
@@ -66,7 +66,7 @@ public class Window{
 		}
 		
 		
-		public void paint(Graphics g, ArrayList<Structures.tri> Mesh) {
+		public void paint(Graphics g, ArrayList<Structures.Tri> Mesh) {
 			//Transparent Mouse
 			BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 			Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
@@ -78,13 +78,12 @@ public class Window{
 			Graphics2D g2 = (Graphics2D) g;
 			if (this.AAlines) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			g2.setStroke(new BasicStroke(1.0f));
-			for(Structures.tri triangle:Mesh){
-				if (this.fill) {
-					g2.setColor(Color.BLACK);	
-				}
-				else {
-					g2.setColor(Color.WHITE);
-				}
+
+			for(Structures.Tri triangle:Mesh){
+
+				if (this.fill) g2.setColor(Color.BLACK);	
+				else g2.setColor(Color.WHITE);
+
 				int[] XCoords = {(int)triangle.a.x,(int)triangle.b.x,(int)triangle.c.x};
 				int[] YCoords = {(int)triangle.a.y,(int)triangle.b.y,(int)triangle.c.y};
 				Polygon tri = new Polygon(XCoords,YCoords,3);
@@ -114,7 +113,7 @@ public class Window{
 				
 		}
 		
-		public void Redraw(ArrayList<Structures.tri> WorldMesh) {
+		public void Redraw(ArrayList<Structures.Tri> WorldMesh) {
 			this.World = WorldMesh; //Not updating ?!?!?!!?
 			//System.out.println(this.World + " " +WorldMesh);
 			this.repaint();
@@ -124,7 +123,7 @@ public class Window{
 	
 	
 	
-	public static Structures.tri Scale(Structures.tri tris,Drawer dim,boolean isStretched){
+	public static Structures.Tri Scale(Structures.Tri tris,Drawer dim,boolean isStretched){
 			
 		float aspectRatio = (float)dim.getWidth() / (float)dim.getHeight(); 
 
@@ -144,14 +143,14 @@ public class Window{
 		  	tris.b.x *= aspectRatio;
 		  	tris.c.x *= aspectRatio;
 			}
-		return new Structures.tri(tris.a,tris.b,tris.c);
+		return new Structures.Tri(tris.a,tris.b,tris.c);
 		}
 	
-	public static ArrayList<Structures.tri> OBJFile(String file,float Zoff) {
+	public static ArrayList<Structures.Tri> OBJFile(String file,float Zoff) {
 		try {
 		Scanner a = new Scanner(new File(file));
 		ArrayList<Structures.Vertex> Vertexs = new ArrayList<Structures.Vertex>();
-		ArrayList<Structures.tri> mesh = new ArrayList<Structures.tri>();
+		ArrayList<Structures.Tri> mesh = new ArrayList<Structures.Tri>();
 		ArrayList<Structures.Vertex> Normals = new ArrayList<Structures.Vertex>();
 		while (a.hasNextLine()) {
 			String line = a.nextLine();
@@ -184,7 +183,7 @@ public class Window{
 				String[] sub = line.split(" ");
 				if(! sub[1].contains("/")) {
 					for(int i =2; i < sub.length-1;i++) {
-						mesh.add(new Structures.tri(Vertexs.get(Integer.parseInt(sub[1])-1),Vertexs.get(Integer.parseInt(sub[i])-1),Vertexs.get(Integer.parseInt(sub[i+1])-1)));
+						mesh.add(new Structures.Tri(Vertexs.get(Integer.parseInt(sub[1])-1),Vertexs.get(Integer.parseInt(sub[i])-1),Vertexs.get(Integer.parseInt(sub[i+1])-1)));
 						}
 					}
 				else if(sub[1].contains("//")) {
@@ -192,14 +191,14 @@ public class Window{
 					int vert1 = Integer.parseInt(insub1[0]);
 					int vert2 = Integer.parseInt(insub2[0]);
 					int vert3 = Integer.parseInt(insub3[0]);
-					mesh.add(new Structures.tri(Vertexs.get(vert1-1),Vertexs.get(vert2-1),Vertexs.get(vert3-1)));
+					mesh.add(new Structures.Tri(Vertexs.get(vert1-1),Vertexs.get(vert2-1),Vertexs.get(vert3-1)));
 					}
 				}
 			}
 		}
 		/*Collections.sort(mesh, new Comparator<tri>(){
 			@Override
-			public int compare(tri tri1, Structures.tri tri2) {
+			public int compare(tri tri1, Structures.Tri tri2) {
 				// tr1 should be in first : returns -1 | else : returns 1
 				return (int)(((tri2.a.z + tri2.b.z + tri2.c.z) - (tri1.a.z + tri1.b.z + tri1.c.z))/Math.abs((tri2.a.z + tri2.b.z + tri2.c.z) - (tri1.a.z + tri1.b.z + tri1.c.z)));
 				}
@@ -211,7 +210,7 @@ public class Window{
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File : " + file + " not found");
-			return new ArrayList<Structures.tri>();
+			return new ArrayList<Structures.Tri>();
 		}
 	}
 }

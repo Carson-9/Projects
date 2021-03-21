@@ -25,36 +25,36 @@ public class Renderer{
 		lightSources.add(new Structures.Vertex(0,0,-1f));
 		ArrayList<Object> World = new ArrayList<Object>();
 		
-		ArrayList<Structures.tri> Mesh = Window.OBJFile(System.getProperty("user.dir") + "/objects/cube.txt",0);
+		ArrayList<Structures.Tri> Mesh = Window.OBJFile(System.getProperty("user.dir") + "/objects/cube.txt",0);
 		Mesh = MeshUtils.meshColoring(Mesh,255,255,255);
-		Object cube = new Object(Mesh,new Structures.Vertex(-3f, 0f, 5f),new float[]{0.0f,0.0f,0.0f});
+		Object cube = new Object(Mesh,new Structures.Vertex(0f, 0f, 5f),new float[]{PI,0.0f,0.0f});
 		World.add(cube);
-		
-		ArrayList<Structures.tri> Mesh2 = Window.OBJFile(System.getProperty("user.dir") + "/objects/lamp.txt",0);
-		Mesh2 = MeshUtils.meshColoring(Mesh2,255,255,255);
-		Object lamp = new Object(Mesh2,new Structures.Vertex(3f, 0f, 5f),new float[]{0.0f,0.0f,0.0f});
-		World.add(lamp);
 
 		//teapot.PerFrameRotation = new float[]{0.001f,0.001f,0.001f};
 		
 		// Params : ArrayList of light sources , is filled, draw Wireframe, AntiAliased (smooth) lines,BgColor
-		Window.Drawer Window = new Window.Drawer(lightSources,true,false,false,new Color(63, 146, 171)); 
+		Window.Drawer Window = new Window.Drawer(lightSources,true,true,false,new Color(63, 146, 171)); 
 		Cam cam = new Cam(origin,new float[]{0,0,0},Window,World,true);
 
 		cam.pos = origin;
+
 		while(true) {
+
 			Instant beginTime = Instant.now();
 			cam.render();
 			for(Object obj:World){
+
 				obj.update();
 				obj.ParseControls(Window.Controls);
+
 			}
+
 			cam.CamParseControls(Window.Controls);
 			cam.rotation[2] = 0;
+			Window.win.setTitle("3D Renderer | " + 1/elapsedTime + " FPS");
 			TimeUnit.NANOSECONDS.sleep(deltaTime.getNano()/5);
 			deltaTime = Duration.between(beginTime, Instant.now());
-			elapsedTime = (float)(deltaTime.getNano());
-			
+			elapsedTime = (float)(deltaTime.getNano()*0.000000001);
 			}
 
 			//Unstable FPS : 500-41

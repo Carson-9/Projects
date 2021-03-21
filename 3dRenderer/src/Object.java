@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 
 public class Object{
-    ArrayList<Structures.tri> mesh;
+    ArrayList<Structures.Tri> mesh;
     Structures.Vertex pos = new Structures.Vertex(0,0,0);
     Structures.Vertex locUp = new Structures.Vertex(0,1,0);
     Structures.Vertex locFr = new Structures.Vertex(0,0,-1);
@@ -15,7 +15,7 @@ public class Object{
     Structures.Matrix rotateY = new Structures.Matrix();
     Structures.Matrix rotateZ = new Structures.Matrix();
 
-    public Object(ArrayList<Structures.tri> mesh, Structures.Vertex pos, float[] rotation){
+    public Object(ArrayList<Structures.Tri> mesh, Structures.Vertex pos, float[] rotation){
         this.mesh = mesh; this.pos = pos; this.rotation = rotation;
         translate.makeTranslation(velocity.x, velocity.y, velocity.z);
         this.rotate(this.rotation);
@@ -33,9 +33,9 @@ public class Object{
     public void rotate(float[] rotation){
         this.rotateX.makeRotX(rotation[0]); this.rotateY.makeRotY(rotation[1]); rotateZ.makeRotZ(rotation[2]);
         for (int i = 0; i < this.mesh.size(); i++){
-            this.mesh.set(i, new Structures.tri(this.rotateX.MatrixMultiply(this.mesh.get(i).a),this.rotateX.MatrixMultiply(this.mesh.get(i).b),this.rotateX.MatrixMultiply(this.mesh.get(i).c)));
-            this.mesh.set(i, new Structures.tri(this.rotateY.MatrixMultiply(this.mesh.get(i).a),this.rotateY.MatrixMultiply(this.mesh.get(i).b),this.rotateY.MatrixMultiply(this.mesh.get(i).c)));
-            this.mesh.set(i, new Structures.tri(this.rotateZ.MatrixMultiply(this.mesh.get(i).a),this.rotateZ.MatrixMultiply(this.mesh.get(i).b),this.rotateZ.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateX.MatrixMultiply(this.mesh.get(i).a),this.rotateX.MatrixMultiply(this.mesh.get(i).b),this.rotateX.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateY.MatrixMultiply(this.mesh.get(i).a),this.rotateY.MatrixMultiply(this.mesh.get(i).b),this.rotateY.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateZ.MatrixMultiply(this.mesh.get(i).a),this.rotateZ.MatrixMultiply(this.mesh.get(i).b),this.rotateZ.MatrixMultiply(this.mesh.get(i).c)));
             this.mesh.get(i).UpdateNormal();
         }
     }
@@ -44,9 +44,9 @@ public class Object{
         //Maybe find a way for cameraMakeTransform to work for world matrices
         this.rotateX.makeRotX(this.PerFrameRotation[0]); this.rotateY.makeRotY(this.PerFrameRotation[1]); this.rotateZ.makeRotZ(this.PerFrameRotation[2]);
         for (int i = 0; i < this.mesh.size(); i++){
-            this.mesh.set(i, new Structures.tri(this.rotateX.MatrixMultiply(this.mesh.get(i).a),this.rotateX.MatrixMultiply(this.mesh.get(i).b),this.rotateX.MatrixMultiply(this.mesh.get(i).c)));
-            this.mesh.set(i, new Structures.tri(this.rotateY.MatrixMultiply(this.mesh.get(i).a),this.rotateY.MatrixMultiply(this.mesh.get(i).b),this.rotateY.MatrixMultiply(this.mesh.get(i).c)));
-            this.mesh.set(i, new Structures.tri(this.rotateZ.MatrixMultiply(this.mesh.get(i).a),this.rotateZ.MatrixMultiply(this.mesh.get(i).b),this.rotateZ.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateX.MatrixMultiply(this.mesh.get(i).a),this.rotateX.MatrixMultiply(this.mesh.get(i).b),this.rotateX.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateY.MatrixMultiply(this.mesh.get(i).a),this.rotateY.MatrixMultiply(this.mesh.get(i).b),this.rotateY.MatrixMultiply(this.mesh.get(i).c)));
+            this.mesh.set(i, new Structures.Tri(this.rotateZ.MatrixMultiply(this.mesh.get(i).a),this.rotateZ.MatrixMultiply(this.mesh.get(i).b),this.rotateZ.MatrixMultiply(this.mesh.get(i).c)));
             this.mesh.get(i).UpdateNormal();
         }
     }
