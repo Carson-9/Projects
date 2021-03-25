@@ -17,4 +17,4 @@ For the moment, a lot of optimisation has to be done.
 
 To add:
   - Textures
-  - Multithreading and GPU optimisation
+  - Multithreading
