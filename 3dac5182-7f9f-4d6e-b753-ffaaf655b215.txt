@@ -1,0 +1,17 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+www.crunchyroll.com	FALSE	/dont-toy-with-me-miss-nagatoro	FALSE	1656494482	initial_referrer	
+.crunchyroll.com	TRUE	/	FALSE	1640371314	c_visitor	7115d3ef-60f9-4116-b80b-b4406bfc87a0
+.www.crunchyroll.com	TRUE	/	FALSE	1656355396	OptanonAlertBoxClosed	2021-06-27T18:43:16.603Z
+.www.crunchyroll.com	TRUE	/	FALSE	1656355398	OptanonControl	ccc=FR&otvers=6.6.0&reg=gdpr&pctm=Sun Jun 27 2021 20:43:16 GMT+0200 (Central European Summer Time)&vers=3.0.3
+.crunchyroll.com	TRUE	/	FALSE	1627548637	c_market_ref	editorial_cr_carousel_miss-nagatoro_fr
+.crunchyroll.com	TRUE	/	TRUE	1625052069	umto	1
+www.crunchyroll.com	FALSE	/	FALSE	1656494305	initial_referrer	
+.www.crunchyroll.com	TRUE	/	FALSE	0	usprivacy	1---
+www.crunchyroll.com	FALSE	/	FALSE	1625004000	blockTrack	1
+.crunchyroll.com	TRUE	/	FALSE	0	session_id	56311822527bc6196c05bd705422bad2
+.crunchyroll.com	TRUE	/	TRUE	1626168081	etp_rt	8e10c3f6-4680-46a8-98eb-1635e2653809
+.www.crunchyroll.com	TRUE	/	FALSE	1656494469	OptanonConsent	isIABGlobal=false&datestamp=Tue+Jun+29+2021+11%3A21%3A09+GMT%2B0200+(Central+European+Summer+Time)&version=6.6.0&hosts=&consentId=0ebd249a-a887-4f0f-a687-372a732c4fb9&interactionCount=1&landingPath=NotLandingPage&groups=req%3A1%2Cven%3A1%2Csm%3A1%2Csmv%3A1%2CBG361%3A1%2Cad%3A1%2Cadv%3A1%2CBG362%3A1&geolocation=FR%3B&AwaitingReconsent=false
+.crunchyroll.com	TRUE	/	TRUE	1624960281	__cf_bm	e62835e163b0d3aef56aa9fefc76a58a8585da42-1624958673-1800-AfZdhjkd8F62vsHG1Ymv2U+irwCnccEqfHF8S0sIjowGdZcneylS+IkaUZRjJeUa1hvsJdg4dL77QEKzEL2P3CwT6tFLYeYxRu9m2RS9MWtq
